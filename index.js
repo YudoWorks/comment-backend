@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Comment = require('./Comment');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json())
+app.use(cors())
 
 mongoose.connect('mongodb://localhost/comment', {
   useNewUrlParser: true,
