@@ -52,21 +52,8 @@ io.on('connection', socket => {
   })
 })
 
-comments.post('/', (req, res) => {
-  const newComment = Comment( req.body );
-  newComment.save().then(() => res.json('successfully save new comment'))
-})
-
 comments.get('/', (req, res) => {
   Comment.find().then(result => res.send(result))
-})
-
-comments.get('/', (req, res) => {
-  Comment.find().then(result => res.send(result))
-})
-
-comments.delete('/:id', (req, res) => {
-  Comment.deleteOne({ _id: req.params.id }).then(result => res.send(result));
 })
 
 server.listen(3001, () => console.log('Listening in PORT 3001'));
