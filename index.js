@@ -43,6 +43,13 @@ io.on('connection', socket => {
     const comments = await Comment.find();
     io.emit('display-latest-comment', comments);    
   })
+
+  socket.on('delete-comment', async id => {
+    await Comment.deleteOne({_id: id})
+
+    const comments = await Comment.find();
+    io.emit('display-latest-comment', comments);  
+  })
 })
 
 comments.post('/', (req, res) => {
