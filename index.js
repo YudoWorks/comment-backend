@@ -14,7 +14,6 @@ const options={
   origins:["http://127.0.0.1:3000"],
  }
 
-app.use(bodyParser.json())
 app.use(express.json())
 app.use(cors())
 app.use('/comments', comments)
@@ -33,9 +32,6 @@ mongoose.connect('mongodb://localhost/comment', {
   .catch(err => console.log(err));
 
 io.on('connection', socket => {
-  console.log('new connection');
-  console.log(socket.id);
-  
   socket.on('create-new-comment', async data => {
     const newComment = Comment(data);
     newComment.save()
