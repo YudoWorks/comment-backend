@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const Comment = require('./Comment');
 const cors = require('cors');
 const http = require('http');
